@@ -13,9 +13,7 @@ const Layout = () => {
         <Outlet />
       </div>
 
-      <div style={{ height: "200px", backgroundColor: "peru" }}>
-        <FooterContainer />
-      </div>
+      <FooterContainer />
     </div>
   );
 };
