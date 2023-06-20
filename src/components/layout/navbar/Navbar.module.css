@@ -1,0 +1,95 @@
+.navBarContainer {
+    padding: 0 10rem;
+    height: 6rem;
+    justify-content: center;
+}
+
+.bar {
+    padding: 0 !important;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    height: 100%;
+}
+
+.bar .menu {
+    display: none;
+}
+
+.bar .name {
+    height: 1.5rem;
+    width: auto;
+    cursor: pointer;
+}
+
+.bar .items {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin: 0 2rem;
+}
+
+.bar .items .item {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 25px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.bar .items .item:hover {
+    color: #d87d4a;
+}
+
+.cartIcon:hover {
+    color: #d87d4a;
+}
+
+.usersContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.usersContainer .loginBox {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+
+.usersContainer .loginBox .linkSign {
+    margin: 0 !important;
+    text-decoration: none;
+    color: #d87d4a;
+}
+
+.usersContainer .loginBox .linkSign:hover {
+    color: #FBAF85;
+}
+
+@media (max-width:1200px) {
+    .navBarContainer {
+        padding: 0 2.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .bar .menu {
+        display: block;
+        color: #ffffff;
+        font-size: 1.5rem;
+    }
+    .bar .items,
+    .usersContainer .loginBox {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .navBarContainer {
+        padding: 0 1.5rem;
+    }
+}
