@@ -1,0 +1,112 @@
+.footerContainer {
+  padding: 3rem 10rem;
+  background-color: #141414 !important;
+  /* height: 22.8rem; */
+  justify-content: center;
+  gap: 2rem;
+}
+
+.footerContainer .bar {
+  padding: 0 !important;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footerContainer .bar .name {
+  height: 1.5rem;
+  width: auto;
+  cursor: pointer;
+}
+
+.footerContainer .bar .items {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.footerContainer .bar .items .item {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 25px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.footerContainer .bar .items .item:hover {
+  color: #d87d4a;
+}
+
+.footerContainer .descriptionIcons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.footerContainer .description {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 25px;
+  max-width: 33rem;
+  opacity: 50%;
+}
+
+.footerContainer .icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.footerContainer .icons .social svg {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.footerContainer .icons .social svg:hover {
+  color: #d87d4a;
+}
+
+.footerContainer .copyRights {
+  margin-top: 1rem;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 25px;
+  opacity: 50%;
+}
+
+.footerContainer .bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+  .footerContainer {
+    padding: 3.7rem 2.5rem;
+  }
+  .footerContainer .bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .footerContainer {
+    padding: 3.7rem 1.5rem;
+  }
+  .footerContainer .bar {
+    align-items: center !important;
+    gap: 3rem;
+  }
+  .footerContainer .bar .items {
+    flex-direction: column !important;
+    gap: 1rem;
+    align-items: center;
+  }
+  .footerContainer .bottom {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
