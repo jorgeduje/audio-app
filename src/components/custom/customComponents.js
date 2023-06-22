@@ -2,8 +2,8 @@ import { Button } from "@mui/material"
 import {styled} from "@mui/material/styles"
 
 export const BotonNaranja = styled(Button)(({theme})=>({
-    width: "160px",
-    padding: "10px",
+    width: "200px",
+  height: "48px",
     // [`&.${Button.classes.root}`]: {
     //     variant: 'outlined', // Cambia la variante de botón por defecto a 'outlined'
     //   },

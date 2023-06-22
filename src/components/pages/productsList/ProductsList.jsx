@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { BotonNaranja } from "../../custom/customComponents";
 
@@ -14,7 +13,7 @@ const ProductsList = ({ products }) => {
               {product.name}
             </h1>
             <Link to={`/productDetail/${product.id}`}>
-              <BotonNaranja>See product</BotonNaranja>
+              <BotonNaranja variant="contained">See product</BotonNaranja>
             </Link>
           </div>
         );

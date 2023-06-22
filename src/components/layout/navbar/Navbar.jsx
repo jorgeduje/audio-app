@@ -84,6 +84,7 @@ const Navbar = ({ size, navigate, menu }) => {
             >
               <ShoppingCartOutlinedIcon sx={{ fontSize: "1.5rem" }} />
             </IconButton>
+            {/* ACA EL MODAL  */}
           </Box>
         </Toolbar>
       </AppBar>
