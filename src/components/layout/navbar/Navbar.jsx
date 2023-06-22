@@ -7,7 +7,8 @@ import styles from "./Navbar.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import DrawerContainer from "./DrawerContainer";
-const Navbar = ({ size, navigate, menu }) => {
+import CustomModalContainer from "../../common/customModal/CustomModalContainer";
+const Navbar = ({ size, navigate, menu, handleOpen, handleClose, open }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -81,9 +82,16 @@ const Navbar = ({ size, navigate, menu }) => {
               color="inherit"
               aria-label="menu"
               sx={{ padding: "0" }}
+              onClick={handleOpen}
             >
               <ShoppingCartOutlinedIcon sx={{ fontSize: "1.5rem" }} />
             </IconButton>
+            {/* ACA EL MODAL  */}
+            <CustomModalContainer
+              open={open}
+              handleClose={handleClose}
+             
+            />
           </Box>
         </Toolbar>
       </AppBar>

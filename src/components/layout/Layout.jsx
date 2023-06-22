@@ -8,7 +8,7 @@ const Layout = () => {
       <NavbarContainer />
 
       <div
-        style={{ backgroundColor: "blue", minHeight: "calc(100vh  - 260px)" }}
+        style={{ minHeight: "calc(100vh  - 260px)" }}
       >
         <Outlet />
       </div>
