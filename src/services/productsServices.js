@@ -9,6 +9,12 @@ export const getAllProducts = async ()=>{
 
 // getById
 
+export const getProductById = async ( id )=>{
+    let promesa = axiosProducts.get(`/${id}`)
+    let res = await promesa
+    return res.data
+}
+
 // create 
 
 // update 

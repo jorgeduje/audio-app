@@ -1,3 +1,7 @@
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import { BotonNaranja } from "../../custom/customComponents";
+
 const ProductsList = ({ products }) => {
   return (
     <div>
@@ -5,9 +9,14 @@ const ProductsList = ({ products }) => {
       {products.map((product, i) => {
         // 0 - 1 - 2 -3 - 4
         return (
-          <h1 key={product.id} style={{ flex: i % 2 === 0 ? "red" : "yellow" }}>
-            {product.name}
-          </h1>
+          <div key={product.id}>
+            <h1 style={{ flex: i % 2 === 0 ? "red" : "yellow" }}>
+              {product.name}
+            </h1>
+            <Link to={`/productDetail/${product.id}`}>
+              <BotonNaranja>See product</BotonNaranja>
+            </Link>
+          </div>
         );
       })}
     </div>
