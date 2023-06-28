@@ -1,43 +1,38 @@
-import { useParams } from "react-router-dom"
-import ProductDetail from "./ProductDetail"
-import { useEffect, useState } from "react"
-import {getProductById} from "../../../services/productsServices"
+import { useParams } from "react-router-dom";
+import ProductDetail from "./ProductDetail";
+import { useEffect, useState } from "react";
+import { getProductById } from "../../../services/productsServices";
+import { addToCart } from "../../../store/cartSlice";
+import { useDispatch } from "react-redux";
+
 
 const ProductDetailContainer = () => {
+  const { id } = useParams();
 
-  const {id} = useParams()
+  const [product, setProduct] = useState({});
+  
+  const dispatch = useDispatch()
 
-  const [product, setProduct] = useState({})
-  console.log(product)
+  useEffect(() => {
+    const getData = async () => {
+      let data = await getProductById(id);
+      setProduct(data);
+    };
 
-  useEffect(()=>{
-
-    const getData = async ()=>{
-      let data = await getProductById(id)
-      setProduct(data)
-    }
-
-    getData()
-
-  },[id])
+    getData();
+  }, [id]);
 
   // FUNCION QUE AGREGA AL CARRITO
-  const onAdd = ( cantidad )=>{
-    // producto 
-    // cantidad 
-
+  const onAdd = (cantidad) => {
     let data = {
       ...product,
-      quantity: cantidad
-    }
+      quantity: cantidad,
+    };
 
-    console.log("agregue al carrito: ", data)
+   dispatch( addToCart(data) ) 
+  };
 
-  }
-    
-  return (
-    <ProductDetail product={product} onAdd={onAdd} />
-  )
-}
+  return <ProductDetail product={product} onAdd={onAdd} />;
+};
 
-export default ProductDetailContainer
+export default ProductDetailContainer;

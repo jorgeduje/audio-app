@@ -15,7 +15,7 @@ let stilosModal = {
   minHeight: "400px",
 };
 
-const CustomModal = ({ open, handleClose }) => {
+const CustomModal = ({ open, handleClose, cart }) => {
   return (
     <div>
       <Modal
@@ -25,9 +25,9 @@ const CustomModal = ({ open, handleClose }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={stilosModal}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
+         {
+          cart.map( prod => <h4 key={prod.id}>{prod.name}</h4>)
+         }
           <Link to="/checkout">
             <BotonNaranja onClick={handleClose} variant="contained">CHECKOUT</BotonNaranja>
           </Link>
