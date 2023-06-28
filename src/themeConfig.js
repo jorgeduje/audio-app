@@ -13,15 +13,3 @@ export const customTheme = createTheme({
     }
 })
 
-export const customDark= createTheme({
-    palette:{
-        primary:{
-            main:"#D87D4A",
-            second: "#FBAF85"
-        },
-        secondary:{
-            main:"#101010",
-            second:"#f1f1f1"
-        }
-    }
-})

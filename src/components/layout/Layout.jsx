@@ -8,14 +8,12 @@ const Layout = () => {
       <NavbarContainer />
 
       <div
-        style={{ backgroundColor: "blue", minHeight: "calc(100vh  - 260px)" }}
+        style={{ minHeight: "calc(100vh  - 260px)" }}
       >
         <Outlet />
       </div>
 
-      <div style={{ height: "200px", backgroundColor: "peru" }}>
-        <FooterContainer />
-      </div>
+      <FooterContainer />
     </div>
   );
 };
