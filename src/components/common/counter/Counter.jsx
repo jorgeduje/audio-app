@@ -24,11 +24,12 @@ const Counter = ({ counter, setCounter, onAdd }) => {
         <Button
           onClick={() => setCounter(counter - 1)}
           sx={{
-            color: "secondary.main",
-            opacity: "0.25",
+            color: "primary.main",
             minWidth: "20px",
             height: "20px",
+            fontSize:"2rem"
           }}
+          disabled={counter > 1 ? false : true}
         >
           -
         </Button>
@@ -36,8 +37,7 @@ const Counter = ({ counter, setCounter, onAdd }) => {
         <Button
           onClick={() => setCounter(counter + 1)}
           sx={{
-            color: "secondary.main",
-            opacity: "0.25",
+            color: "primary.main",
             minWidth: "20px",
             height: "20px",
           }}

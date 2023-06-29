@@ -11,7 +11,6 @@ const CustomModalContainer = ({ open, handleClose }) => {
     dispatch(getTotalPrice())
   }, [cart, dispatch])
  
- console.log("se ejecuto el total price", total)
 
   return (
     <CustomModal
