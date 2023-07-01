@@ -1,15 +1,17 @@
-import CounterContainer from "../../common/counter/CounterContainer"
+import CounterContainer from "../../common/counter/CounterContainer";
 
-const ProductDetail = ({product, onAdd}) => {
-
+const ProductDetail = ({ product, onAdd, initialQuantity }) => {
   return (
     <div>
-     
-        <h3>{product.name}</h3>
-        <h4>{product.description}</h4>
-        <CounterContainer onAdd={onAdd} />
+      <h3>{product.name}</h3>
+      <h4>{product.description}</h4>
+      <CounterContainer
+        onAdd={onAdd}
+        initialQuantity={initialQuantity}
+        stock={product.stock}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default ProductDetail
+export default ProductDetail;

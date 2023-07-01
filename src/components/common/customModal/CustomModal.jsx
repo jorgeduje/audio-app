@@ -43,7 +43,7 @@ const CustomModal = ({ open, handleClose, cart, dispatch, total }) => {
                 <h5>{prod.price}</h5>
               </div>
         
-              <CartCounter id={prod.id} quantity={prod.quantity} />
+              <CartCounter id={prod.id} quantity={prod.quantity} stock={prod.stock} />
             </div>
           ))}
 

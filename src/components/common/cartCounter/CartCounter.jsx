@@ -1,8 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
-import { decrementOneById, incrementOneById, removeById } from "../../../store/cartSlice";
+import {
+  decrementOneById,
+  incrementOneById,
+  removeById,
+} from "../../../store/cartSlice";
 import { useDispatch } from "react-redux";
 
-const CartCounter = ({ id, quantity }) => {
+const CartCounter = ({ id, quantity, stock }) => {
   const dispatch = useDispatch();
 
   return (
@@ -21,7 +25,7 @@ const CartCounter = ({ id, quantity }) => {
           onClick={
             quantity > 1
               ? () => dispatch(decrementOneById(id))
-              : ()=> dispatch( removeById(id) )
+              : () => dispatch(removeById(id))
           }
           sx={{
             color: "primary.main",
@@ -39,6 +43,7 @@ const CartCounter = ({ id, quantity }) => {
             minWidth: "20px",
             height: "20px",
           }}
+          disabled={quantity >= stock ? true : false}
         >
           +
         </Button>

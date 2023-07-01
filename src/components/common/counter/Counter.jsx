@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { BotonNaranja } from "../../custom/customComponents";
 
-const Counter = ({ counter, setCounter, onAdd }) => {
+const Counter = ({ counter, setCounter, onAdd, stock }) => {
   return (
     <Box
       sx={{
@@ -41,6 +41,7 @@ const Counter = ({ counter, setCounter, onAdd }) => {
             minWidth: "20px",
             height: "20px",
           }}
+          disabled={counter >= stock ? true : false}
         >
           +
         </Button>
