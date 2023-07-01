@@ -3,13 +3,22 @@ import ProductDetail from "./ProductDetail";
 import { useEffect, useState } from "react";
 import { getProductById } from "../../../services/productsServices";
 import { addToCart } from "../../../store/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const ProductDetailContainer = () => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
+  const {cart} = useSelector( (store)=>store.cartSlice )
+
+  let productOfCart = cart.find( elemento => elemento.id === +id )
+  let initialQuantity = productOfCart?.quantity
+
+
+  // +"14" ---> 14
+
+
   
   const dispatch = useDispatch()
 
@@ -32,7 +41,7 @@ const ProductDetailContainer = () => {
    dispatch( addToCart(data) ) 
   };
 
-  return <ProductDetail product={product} onAdd={onAdd} />;
+  return <ProductDetail product={product} onAdd={onAdd} initialQuantity={initialQuantity} />;
 };
 
 export default ProductDetailContainer;

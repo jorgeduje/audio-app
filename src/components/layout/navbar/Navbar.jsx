@@ -8,7 +8,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import DrawerContainer from "./DrawerContainer";
 import CustomModalContainer from "../../common/customModal/CustomModalContainer";
-const Navbar = ({ size, navigate, menu, handleOpen, handleClose, open }) => {
+import { Badge } from "@mui/material";
+const Navbar = ({ size, navigate, menu, handleOpen, handleClose, open, cart }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -75,23 +76,21 @@ const Navbar = ({ size, navigate, menu, handleOpen, handleClose, open }) => {
                 Log In
               </Link>
             </Box>
-            <IconButton
-              className={styles.cartIcon}
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ padding: "0" }}
-              onClick={handleOpen}
-            >
-              <ShoppingCartOutlinedIcon sx={{ fontSize: "1.5rem" }} />
-            </IconButton>
+            <Badge badgeContent={cart.length} color="primary" >
+              <IconButton
+                className={styles.cartIcon}
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ padding: "0" }}
+                onClick={handleOpen}
+              >
+                <ShoppingCartOutlinedIcon sx={{ fontSize: "1.5rem" }} />
+              </IconButton>
+            </Badge>
             {/* ACA EL MODAL  */}
-            <CustomModalContainer
-              open={open}
-              handleClose={handleClose}
-             
-            />
+            <CustomModalContainer open={open} handleClose={handleClose} />
           </Box>
         </Toolbar>
       </AppBar>
