@@ -6,6 +6,7 @@ const Register = () => {
     <div>
         <form >
             <TextField label="email" />
+            <TextField label="password" />
         </form>
     </div>
   )

@@ -2,6 +2,9 @@ import { useState } from "react";
 import Login from "./Login";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { login, loginWithGoogle } from "../../../firebaseConfig";
+import { loginRedux } from "../../../store/authSlice";
+import { useDispatch } from "react-redux";
 
 const LoginContainer = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,15 +12,16 @@ const LoginContainer = () => {
   const handleShow = () => {
     setShowPassword(!showPassword);
   };
+  const dispatch = useDispatch()
 
   const { handleSubmit, handleChange, errors } = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    onSubmit: (data) => {
-      console.log("se envio el formulario", data);
-      // ACA LLAMARIA A FIREBASE
+    onSubmit: async (data) => {
+      let result = await login(data)
+      dispatch( loginRedux(result.user) )
     },
     validateOnChange: false,
     validationSchema: Yup.object({
@@ -28,9 +32,14 @@ const LoginContainer = () => {
     }),
   });
 
-console.log(errors)
+  const ingresarConGoogle = async()=>{
+    let res = await loginWithGoogle()
+    dispatch( loginRedux(res.user) )
+  }
+
 
   return (
+   <>
     <Login
       showPassword={showPassword}
       handleShow={handleShow}
@@ -38,6 +47,9 @@ console.log(errors)
       handleChange={handleChange}
       errors={errors}
     />
+
+    <button onClick={ingresarConGoogle}>Ingrear con google</button>
+   </>
   );
 };
 

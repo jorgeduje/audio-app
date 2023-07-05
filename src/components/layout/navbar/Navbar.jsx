@@ -91,6 +91,7 @@ const Navbar = ({ size, navigate, menu, handleOpen, handleClose, open, cart }) =
             </Badge>
             {/* ACA EL MODAL  */}
             <CustomModalContainer open={open} handleClose={handleClose} />
+            <Link to="/dashboard">Ir al dashboard</Link>
           </Box>
         </Toolbar>
       </AppBar>
