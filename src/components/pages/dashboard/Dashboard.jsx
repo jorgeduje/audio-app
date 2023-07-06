@@ -1,8 +1,10 @@
 
-const Dashboard = () => {
+const Dashboard = ({generarDocumentos}) => {
   return (
     <div>
-        Aca manipulo los datos por que soy el admin
+        <h1>Aca manipulo los datos por que soy el admin</h1>
+        
+        <button onClick={generarDocumentos}>Generar</button>
     </div>
   )
 }
