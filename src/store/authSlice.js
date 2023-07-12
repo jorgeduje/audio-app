@@ -11,9 +11,17 @@ const initialState = {
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state)=>{
+      state.user = {}
+      state.accessToken = ""
+      state.isLogged = false
+      state.isLoading = false
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
+      state.user = action.payload.userData
       state.accessToken = action.payload.accessToken;
       state.isLogged = true;
       state.isLoading = false;
@@ -21,12 +29,13 @@ export const authSlice = createSlice({
     builder.addCase(login.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(login.rejected, (state, action) => {
+    builder.addCase(login.rejected, (state) => {
       state.accessToken = "";
       state.isLogged = false;
       state.isLoading = false;
     });
     builder.addCase(loginGoogle.fulfilled, (state, action) => {
+      state.user = action.payload.userData
       state.accessToken = action.payload.accessToken;
       state.isLogged = true;
       state.isLoading = false;

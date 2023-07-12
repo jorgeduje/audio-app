@@ -1,13 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { loginWithGoogle, onSignIn } from "../firebaseConfig";
+import { db, loginWithGoogle, onSignIn } from "../firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 export const login = createAsyncThunk(
   "login",
-  async (argument, { rejectWithValue }) => {
-    console.log("argumentosss")
+  async (argument, { rejectWithValue }) => { 
     let res = await onSignIn(argument);
     if (res.user.accessToken) {
-      return res.user;
+      let usersCollection = collection(db, "users")
+      let q = query(usersCollection, where("email", "==", res.user.email))
+      const userInfo = await getDocs( q )
+      const userData = {...userInfo.docs[0].data(),  id: userInfo.docs[0].id }
+     
+      return {userData, accessToken: res.user.accessToken };
     } else {
       rejectWithValue("Ocurrio un error");
     }
@@ -18,7 +23,7 @@ export const loginGoogle = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     let res = await loginWithGoogle();
     if (res.user.accessToken) {
-      return res.user;
+      return {userData: res.user, accessToken: res.user.accessToken};
     } else {
       rejectWithValue("Ocurrio un error");
     }

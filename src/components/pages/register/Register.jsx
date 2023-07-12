@@ -5,6 +5,8 @@ const Register = () => {
   return (
     <div>
         <form >
+            <TextField label="nombre y apellido" />
+            <TextField label="url image" />
             <TextField label="email" />
             <TextField label="password" />
         </form>
