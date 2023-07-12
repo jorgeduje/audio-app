@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider
+  GoogleAuthProvider,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -23,7 +23,7 @@ const auth = getAuth(app);
 
 // LOGIN --> export
 
-export const login = async ({ email, password }) => {
+export const onSignIn = async ({ email, password }) => {
   try {
     let res = await signInWithEmailAndPassword(auth, email, password);
     return res;
@@ -43,12 +43,12 @@ export const register = async ({ email, password }) => {
 };
 
 // LOGIN CON GOOGLE --> export
-let googleProvider = new GoogleAuthProvider()
+let googleProvider = new GoogleAuthProvider();
 
 export const loginWithGoogle = async () => {
   try {
-    let res = await signInWithPopup(auth , googleProvider);
-    return res
+    let res = await signInWithPopup(auth, googleProvider);
+    return res;
   } catch (error) {
     console.log(error);
   }
