@@ -10,11 +10,11 @@ const AppRouter = () => {
       <Route element={<Layout />}>
         {menuRoutes.map(({ id, path, Element }) => (
           <Route key={id} path={path} element={<Element />} />
-        ))}
+          ))}
+          <Route path="/dashboard" element={<DashboardContainer />} />
       </Route>
 
       <Route element={<ProtectedRoutes />}>
-        <Route path="/dashboard" element={<DashboardContainer />} />
       </Route>
 
       <Route path="*" element={<h1>No existe</h1>} />
