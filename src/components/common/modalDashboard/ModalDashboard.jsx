@@ -1,4 +1,7 @@
 import { Box, Modal, TextField } from "@mui/material";
+import { useFormik } from "formik";
+import { db } from "../../../firebaseConfig";
+import { doc, updateDoc } from "firebase/firestore";
 
 const style = {
   position: "absolute",
@@ -11,9 +14,23 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const ModalDashboard = ({ open, data, disabled, handleClose }) => {
-  console.log("deshabilitar los inputs", disabled);
-  console.log("data: ", data);
+const ModalDashboard = ({ open, data, disabled, handleClose, setChangesProducts }) => {
+  const { handleSubmit, handleChange, } = useFormik({
+    initialValues: {
+      name: data.name,
+      price: data.price,
+    },
+    onSubmit: (x) => {
+      let obj = {
+        ...x,
+        price: +x.price
+      }
+      updateDoc( doc(db, "products", data.id), obj )
+      setChangesProducts(true)
+      handleClose()
+    },
+  });
+
   return (
     <div>
       <Modal
@@ -23,13 +40,20 @@ const ModalDashboard = ({ open, data, disabled, handleClose }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form>
+          <form onSubmit={handleSubmit}>
             <TextField
               name="name"
               defaultValue={data.name}
               disabled={disabled}
+              onChange={handleChange}
             />
-            {!disabled && <button>Enviar</button>}
+            <TextField
+              name="price"
+              defaultValue={data.price}
+              disabled={disabled}
+              onChange={handleChange}
+            />
+            {!disabled && <button type="submit">Enviar</button>}
             <button type="button" onClick={handleClose}>
               Cerrar
             </button>
