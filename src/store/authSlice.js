@@ -1,20 +1,49 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+import { login, loginGoogle } from "./authThunk";
 
 const initialState = {
-   user:{},
-   accessToken: "",
-   isLogged: false
-}
+  user: {},
+  accessToken: "",
+  isLogged: false,
+  isLoading: false,
+};
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
-    login: ()=>{}
+    logout: (state)=>{
+      state.user = {}
+      state.accessToken = ""
+      state.isLogged = false
+      state.isLoading = false
+    }
   },
-})
+  extraReducers: (builder) => {
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.user = action.payload.userData
+      state.accessToken = action.payload.accessToken;
+      state.isLogged = true;
+      state.isLoading = false;
+    });
+    builder.addCase(login.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(login.rejected, (state) => {
+      state.accessToken = "";
+      state.isLogged = false;
+      state.isLoading = false;
+    });
+    builder.addCase(loginGoogle.fulfilled, (state, action) => {
+      state.user = action.payload.userData
+      state.accessToken = action.payload.accessToken;
+      state.isLogged = true;
+      state.isLoading = false;
+    });
+  },
+});
 
 // Action creators are generated for each case reducer function
-export const { login } = authSlice.actions
+export const { loginRedux } = authSlice.actions;
 
-export default authSlice.reducer
+export default authSlice.reducer;
