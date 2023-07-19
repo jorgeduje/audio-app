@@ -12,6 +12,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ModalDashboard from "../../common/modalDashboard/ModalDashboard";
+import CreateProductModal from "../../common/createProductModal/CreateProductModal";
 const Dashboard = ({
   products,
   viewById,
@@ -21,11 +22,15 @@ const Dashboard = ({
   open,
   handleClose,
   disabled,
-  setChangesProducts
+  setChangesProducts,
+  openCreate,
+  handleCLoseCreate,
+  setOpenCreate
 }) => {
   return (
     <div>
       <h1>Aca manipulo los datos por que soy el admin</h1>
+      <button onClick={()=>setOpenCreate(true)}>Agregar</button>
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -75,6 +80,8 @@ const Dashboard = ({
           setChangesProducts={setChangesProducts}
         />
       )}
+
+      <CreateProductModal open={openCreate} handleCLose={handleCLoseCreate} />
     </div>
   );
 };

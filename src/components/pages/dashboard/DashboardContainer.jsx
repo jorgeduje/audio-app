@@ -9,6 +9,10 @@ const DashboardContainer = () => {
   const [disabled, setDisabled] = useState(true);
   const [data, setData] = useState({});
   const [changesProducts, setChangesProducts] = useState(false);
+  const [openCreate, setOpenCreate] = useState(false)
+  const handleCLoseCreate = ()=>{
+    setOpenCreate(false)
+  }
 
   const handleClose = () => {
     setOpen(false);
@@ -71,7 +75,10 @@ const DashboardContainer = () => {
     handleClose,
     disabled,
     data,
-    setChangesProducts
+    setChangesProducts,
+    openCreate,
+    handleCLoseCreate,
+    setOpenCreate
   };
 
   return <Dashboard {...props} />;
