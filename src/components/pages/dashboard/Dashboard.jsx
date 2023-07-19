@@ -24,13 +24,13 @@ const Dashboard = ({
   disabled,
   setChangesProducts,
   openCreate,
-  handleCLoseCreate,
-  setOpenCreate
+  handleCloseCreate,
+  setOpenCreate,
 }) => {
   return (
     <div>
       <h1>Aca manipulo los datos por que soy el admin</h1>
-      <button onClick={()=>setOpenCreate(true)}>Agregar</button>
+      <button onClick={() => setOpenCreate(true)}>Agregar</button>
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -80,8 +80,9 @@ const Dashboard = ({
           setChangesProducts={setChangesProducts}
         />
       )}
-
-      <CreateProductModal open={openCreate} handleCLose={handleCLoseCreate} />
+      {openCreate && (
+        <CreateProductModal open={openCreate} handleClose={handleCloseCreate} />
+      )}
     </div>
   );
 };

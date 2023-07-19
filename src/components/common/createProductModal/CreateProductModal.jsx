@@ -14,6 +14,7 @@ const style = {
   p: 4,
 };
 const CreateProductModal = ({open, handleClose}) => {
+  console.log(handleClose)
 
     const {handleChange , handleSubmit} = useFormik({
         initialValues: {
