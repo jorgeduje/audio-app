@@ -4,6 +4,7 @@ import Layout from "../components/layout/Layout";
 import DashboardContainer from "../components/pages/dashboard/DashboardContainer";
 import ProtectedRoutes from "./ProtectedRoutes";
 import DashboardUsers from "../components/pages/dashboardUsers/DashboardUsers";
+import PagoExitoso from "../components/pages/pagoExitoso/PagoExitoso";
 
 const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ const AppRouter = () => {
           <Route key={id} path={path} element={<Element />} />
         ))}
         <Route path="/dashboard" element={<DashboardContainer />} />
+        {/* <Route exact path="/webhook" element={<PagoExitoso />} /> */}
         <Route path="/dashboardUsers" element={<DashboardUsers />} />
       </Route>
 

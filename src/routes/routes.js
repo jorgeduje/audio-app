@@ -38,9 +38,5 @@ export const menuRoutes = [
         path: "/login",
         Element: LoginContainer
     },
-    {
-        id:"success",
-        path: "/webhook",
-        Element: PagoExitoso
-    },
+   
 ]
