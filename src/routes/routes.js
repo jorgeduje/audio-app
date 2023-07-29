@@ -1,6 +1,7 @@
 import CheckoutContainer from "../components/pages/checkout/CheckoutContainer";
 import HomeContainer from "../components/pages/home/HomeContainer";
 import LoginContainer from "../components/pages/login/LoginContainer";
+import PagoExitoso from "../components/pages/pagoExitoso/PagoExitoso";
 import ProductDetailContainer from "../components/pages/productDetail/ProductDetailContainer";
 import ProductsListContainer from "../components/pages/productsList/ProductsListContainer";
 import RegisterContainer from "../components/pages/register/RegisterContainer";
@@ -36,5 +37,10 @@ export const menuRoutes = [
         id:"login",
         path: "/login",
         Element: LoginContainer
+    },
+    {
+        id:"success",
+        path: "/success",
+        Element: PagoExitoso
     },
 ]
