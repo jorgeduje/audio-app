@@ -40,7 +40,7 @@ export const menuRoutes = [
     },
     {
         id:"success",
-        path: "/success",
+        path: "/webhook",
         Element: PagoExitoso
     },
 ]
