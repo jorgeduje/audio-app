@@ -22,15 +22,11 @@ const CheckoutContainer = () => {
   });
 
   useEffect(() => {
-    if (paramValue === "aprovved") {
-      let order = {
-        name: userData.name,
-        email: userData.email,
-        items: cart,
-        date: serverTimestamp(),
-      };
+    if (paramValue === "approved") {
       let ordersCollections = collection(db, "orders");
-      addDoc(ordersCollections, order).then((res) => setOrderId(res.id));
+      addDoc(ordersCollections, JSON.parse(localStorage.getItem("order"))).then(
+        (res) => setOrderId(res.id)
+      );
     }
   }, [paramValue]);
 
@@ -40,7 +36,7 @@ const CheckoutContainer = () => {
         "https://prueba-mp.vercel.app/create_preference",
         [
           { title: "x", unit_price: 5, quantity: 2 },
-          { title: "y", unit_price: 4, quantity: 3 },
+          { title: "y", unit_price: 4, quantity: 2 },
         ]
       );
 
@@ -52,11 +48,22 @@ const CheckoutContainer = () => {
   };
 
   const handleBuy = async () => {
+    let order = {
+      name: userData.name,
+      email: userData.email,
+      items: [
+        { title: "z", unit_price: 3, quantity: 4 },
+        { title: "w", unit_price: 4, quantity: 2 },
+      ],
+      date: serverTimestamp(),
+    };
+    localStorage.setItem("order", JSON.stringify(order));
     const id = await createPreference();
     if (id) {
       setPreferenceId(id);
     }
   };
+
   const funcionDeLosInput = (evento) => {
     setUserData({ ...userData, [evento.target.name]: evento.target.value });
   };
@@ -76,9 +83,10 @@ const CheckoutContainer = () => {
             name="email"
             onChange={funcionDeLosInput}
           />
+          <button onClick={handleBuy}>Seleccione metodo de pago</button>
         </div>
       )}
-      <button onClick={handleBuy}>Seleccione metodo de pago</button>
+
       {preferenceId && (
         <Wallet
           initialization={{ preferenceId }}
